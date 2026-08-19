@@ -1,0 +1,168 @@
+name: QA Pipeline — Playwright + Allure
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Run daily at 08:00 WIB (01:00 UTC)
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  
+jobs:
+  # ─────────────────────────────────────────────
+  # Job 1: E2E Playwright Tests + Allure Report
+  # ─────────────────────────────────────────────
+  playwright:
+    name: Playwright E2E Tests
+    runs-on: ubuntu-latest
+
+    services:
+      orangehrm:
+        image: orangehrm/orangehrm
+        ports:
+          - 8080:80
+        options: >-
+          --health-cmd "curl -f http://localhost/ || exit 1"
+          --health-interval 30s
+          --health-timeout 10s
+          --health-retries 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: playwright/package-lock.json
+
+      - name: Install dependencies
+        working-directory: playwright
+        run: npm ci
+
+      - name: Install Playwright browsers
+        working-directory: playwright
+        run: npx playwright install --with-deps chromium
+
+      - name: Wait for OrangeHRM to be ready
+        run: |
+          echo "Waiting for OrangeHRM..."
+          for i in {1..30}; do
+            curl -s http://localhost:8080/web/index.php/auth/login && break
+            sleep 5
+          done
+
+      - name: Run Playwright tests
+        working-directory: playwright
+        run: |
+          npx playwright test --project=chromium --reporter=allure-playwright
+          npx playwright test tests/auth/login/ --project=login-tests --reporter=allure-playwright
+        env:
+          CI: true
+
+      - name: Write Allure environment info
+        if: always()
+        working-directory: playwright
+        run: |
+          mkdir -p allure-results
+          cat <<EOF > allure-results/environment.properties
+          Browser=Chromium
+          Base.URL=https://opensource-demo.orangehrmlive.com
+          Framework=Playwright
+          EOF
+
+      - name: Upload Allure results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-results
+          path: playwright/allure-results/
+          retention-days: 30
+
+      - name: Upload Playwright HTML report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright/playwright-report/
+          retention-days: 14
+
+      - name: Generate and commit Allure Report
+        # Runs whether or not tests passed, so a report is always published —
+        # but only on main: a PR run is checked out at a detached/merge
+        # commit, not the main branch, so pushing to main from a PR would
+        # both fail and not make sense.
+        if: always() && github.ref == 'refs/heads/main'
+        run: |
+          npm install -g allure-commandline
+          allure generate playwright/allure-results --clean --output allure-report/allure-output
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add .
+          git diff --staged --quiet || git commit -m "chore: auto-update Allure report [skip ci]"
+          # actions/checkout leaves the repo in detached HEAD, so a bare
+          # `git push` has no branch to push — push explicitly to main instead.
+          git push origin HEAD:main
+        working-directory: .
+
+      - name: Create root redirect to Allure Report
+        if: always() && github.ref == 'refs/heads/main'
+        run: |
+          cat > index.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+            <head>
+              <meta http-equiv="refresh" content="0; url=allure-report/allure-output/">
+              <title>QA Portfolio — Redirecting to Allure Report</title>
+            </head>
+            <body>
+              <p>Redirecting to <a href="allure-report/allure-output/">Allure Report</a>...</p>
+            </body>
+          </html>
+          EOF
+
+          git add index.html
+          git diff --staged --quiet || git commit -m "chore: add root redirect to Allure report [skip ci]"
+          git push origin HEAD:main
+
+  # ─────────────────────────────────────────────
+  # Job 2: Snyk Security Scan (SCA + SAST)
+  # ─────────────────────────────────────────────
+  snyk:
+    name: Snyk Security Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Snyk CLI
+        uses: snyk/actions/setup@master
+
+      - name: Snyk SCA — Dependency scan
+        run: snyk test --json > security/snyk/results/snyk-sca.json || true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      - name: Snyk SAST — Code scan
+        run: snyk code test --json > security/snyk/results/snyk-sast.json || true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      - name: Upload Snyk results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: snyk-results
+          path: security/snyk/results/
+          retention-days: 30

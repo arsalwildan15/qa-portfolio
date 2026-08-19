@@ -1,0 +1,32 @@
+# Node
+node_modules/
+playwright/node_modules/
+
+# Environment variables (real credentials — never commit)
+.env
+playwright/.env
+
+# Playwright
+playwright/allure-results/
+playwright/playwright-report/
+playwright/test-results/
+playwright/.auth/session.json
+
+# Allure
+allure-report/output/
+
+# Snyk results (actual scan outputs — add yours manually)
+security/snyk/results/*.json
+security/snyk/results/*.html
+
+# ZAP reports (actual scan outputs — add yours manually)
+security/zap/reports/*.html
+security/zap/reports/*.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

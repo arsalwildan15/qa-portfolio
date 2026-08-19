@@ -1,0 +1,12 @@
+[STEP 1] Navigate to login page...
+[STEP 2] Click "Forgot your password?" link...
+[STEP 3] Verify reset password page shows an input field...
+============================================================
+TC-LOGIN-40 | Forgot password link opens the reset password page
+============================================================
+  ✓ Navigate to login page → visible
+  ✓ GET /auth/requestPasswordResetCode status → 200
+  ✓ Reset page input field visible → visible
+============================================================
+STATUS: PASSED
+============================================================

@@ -1,0 +1,23 @@
+[STEP 1] Attempt 1: navigate fresh and submit wrong credentials...
+[STEP 2] Attempt 2: navigate fresh and submit wrong credentials...
+[STEP 3] Attempt 3: navigate fresh and submit wrong credentials...
+[STEP 4] Attempt 4: navigate fresh and submit wrong credentials...
+[STEP 5] Attempt 5: navigate fresh and submit wrong credentials...
+TC-LOGIN-37 observed statuses across 5 attempts: [302,302,302,302,302]
+TC-LOGIN-37 rate-limit signal observed: false
+[STEP 6] Check for captcha/lockout UI...
+TC-LOGIN-37 lockout/captcha UI present: false
+============================================================
+TC-LOGIN-37 | Repeated failed logins are observed for rate limiting
+============================================================
+  ✓ Attempt 1 status → 302 https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+  ✓ Attempt 2 status → 302 https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+  ✓ Attempt 3 status → 302 https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+  ✓ Attempt 4 status → 302 https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+  ✓ Attempt 5 status → 302 https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+  ✓ Rate limit / 429 detected → none (observed)
+  ✓ Lockout/captcha in UI → none (observed)
+  ✓ No server crash (no 500s) → [302,302,302,302,302]
+============================================================
+STATUS: PASSED
+============================================================

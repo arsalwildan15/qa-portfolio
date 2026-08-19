@@ -1,0 +1,14 @@
+[STEP 1] Log in with valid credentials...
+[STEP 2] Logout via user dropdown...
+[STEP 3] Attempt to reuse the browser to hit /dashboard again...
+[STEP 4] Verify redirected to login page...
+============================================================
+TC-LOGIN-25 | Session is invalidated after logout
+============================================================
+  ✓ Login POST status → 302
+  ✓ Logout clicked → clicked
+  ✓ Navigated to /dashboard/index → navigated
+  ✓ Redirected to /auth/login → https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+============================================================
+STATUS: PASSED
+============================================================

@@ -1,0 +1,16 @@
+[STEP 1] Navigate to login page...
+[STEP 2] Fill HTML injection payload in username: <h1>Hacked</h1>
+[STEP 3] Fill password "admin123"...
+[STEP 4] Submit and intercept POST /auth/validate...
+[STEP 5] Verify no real <h1>Hacked</h1> rendered in DOM...
+============================================================
+TC-LOGIN-27 | HTML injection in username is not rendered as HTML
+============================================================
+  ✓ Navigate to login page → visible
+  ✓ Fill HTML payload in username → filled
+  ✓ POST /auth/validate status → 302
+  ✓ Location header → https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+  ✓ No <h1>Hacked</h1> rendered → count=0
+============================================================
+STATUS: PASSED
+============================================================

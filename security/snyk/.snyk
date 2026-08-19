@@ -1,0 +1,15 @@
+# Snyk (https://snyk.io) policy file
+# Portfolio project — OrangeHRM security scanning
+
+version: v1.25.0
+
+# Ignore rules for accepted risks / false positives
+# Format:
+# ignore:
+#   CVE-XXXX-XXXX:
+#     - '*':
+#         reason: "Accepted risk — not exploitable in this context"
+#         expires: '2026-01-01T00:00:00.000Z'
+
+ignore: {}
+patch: {}

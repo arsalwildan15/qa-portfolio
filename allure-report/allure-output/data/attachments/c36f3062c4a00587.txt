@@ -1,0 +1,14 @@
+[STEP 1] Log in with valid credentials...
+[STEP 2] Logout via user dropdown...
+[STEP 3] Attempt to open the employee list module directly...
+[STEP 4] Verify redirected to login, no employee data shown...
+============================================================
+TC-LOGIN-26 | Protected module is inaccessible after logout
+============================================================
+  ✓ Login POST status → 302
+  ✓ Logout clicked → clicked
+  ✓ Redirected to /auth/login → https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+  ✓ No employee data visible → confirmed
+============================================================
+STATUS: PASSED
+============================================================

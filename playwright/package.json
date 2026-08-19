@@ -1,0 +1,23 @@
+{
+  "name": "qa-portfolio-playwright",
+  "version": "1.0.0",
+  "description": "QA Portfolio - Playwright E2E Tests for OrangeHRM",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:auth": "npx playwright test tests/auth/",
+    "test:leave": "npx playwright test tests/leave/",
+    "test:recruitment": "npx playwright test tests/recruitment/",
+    "test:pim": "npx playwright test tests/pim/",
+    "report:generate": "npx allure generate allure-results --output ../allure-report/allure-output",
+    "report:open": "npx allure open ../allure-report/allure-output",
+    "report:serve": "npx allure serve allure-results"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.44.0",
+    "@types/node": "^26.2.0",
+    "allure-playwright": "^3.0.0",
+    "dotenv": "^17.4.2",
+    "typescript": "^5.4.0"
+  }
+}
