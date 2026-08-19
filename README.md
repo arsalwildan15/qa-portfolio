@@ -132,3 +132,4 @@ snyk container test orangehrm/orangehrm --json > security/snyk/results/snyk-cont
 - 💼 [linkedin.com/in/arsalwildan](https://linkedin.com/in/arsalwildan)
 - 🐙 [github.com/arsalwildan15](https://github.com/arsalwildan15)
 - 📊 [Live Allure Report](https://arsalwildan15.github.io/qa-portfolio/)
+
