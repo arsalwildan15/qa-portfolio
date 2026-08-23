@@ -1,0 +1,16 @@
+[STEP 1] Navigate to login page...
+[STEP 2] Fill username "Admin"...
+[STEP 3] Fill password with 1000 characters...
+[STEP 4] Submit and measure response time...
+============================================================
+TC-LOGIN-33 | 1000-character password does not freeze the server
+============================================================
+  ✓ Navigate to login page → visible
+  ✓ Fill password (1000 chars) → filled
+  ✓ Status is not 500 → 302
+  ✓ POST /auth/validate status → 302
+  ✓ Location header → https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+  ✓ Response time under 10s → 528ms
+============================================================
+STATUS: PASSED
+============================================================
