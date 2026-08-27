@@ -1,0 +1,18 @@
+[STEP 1] Navigate to login page...
+[STEP 2] Fill username with 255 characters...
+[STEP 3] Fill password "admin123"...
+[STEP 4] Submit and measure response time...
+[STEP 5] Verify error message visible (no crash)...
+============================================================
+TC-LOGIN-17 | 255-character username does not crash the server
+============================================================
+  ✓ Navigate to login page → visible
+  ✓ Fill username (255 chars) → filled
+  ✓ Status is not 500 → 302
+  ✓ POST /auth/validate status → 302
+  ✓ Location header → https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+  ✓ Response time under 5s → 286ms
+  ✓ Error message visible (no crash) → Invalid credentials
+============================================================
+STATUS: PASSED
+============================================================
