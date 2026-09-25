@@ -1,2 +1,2 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","24783","authenticate and save session","setup","2026-09-24","failed","2026-09-24","","auth/global.setup.ts","",""
+"","25508","authenticate and save session","setup","2026-09-25","failed","2026-09-25","","auth/global.setup.ts","",""
