@@ -1,0 +1,16 @@
+[STEP 1] Navigate to login page...
+[STEP 2] Fill username "Admin"...
+[STEP 3] Fill password...
+[STEP 4] Press Enter in the password field...
+[STEP 5] Verify redirected to dashboard...
+============================================================
+TC-LOGIN-29 | Pressing Enter submits the login form
+============================================================
+  ✓ Navigate to login page → visible
+  ✓ POST /auth/validate triggered by Enter → triggered
+  ✓ POST /auth/validate status → 302
+  ✓ Location header → https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index
+  ✓ URL after login → /dashboard
+============================================================
+STATUS: PASSED
+============================================================

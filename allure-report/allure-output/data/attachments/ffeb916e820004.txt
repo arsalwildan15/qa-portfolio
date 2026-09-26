@@ -1,0 +1,17 @@
+[STEP 1] Navigate to login page...
+[STEP 2] Type username "Admin" key-by-key...
+[STEP 3] Type password key-by-key...
+[STEP 4] Submit and intercept POST /auth/validate...
+[STEP 5] Verify redirected to dashboard...
+============================================================
+TC-LOGIN-31 | Typing credentials key-by-key logs in successfully
+============================================================
+  ✓ Navigate to login page → visible
+  ✓ Fill username key-by-key → filled
+  ✓ Fill password key-by-key → filled
+  ✓ POST /auth/validate status → 302
+  ✓ Location header → https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index
+  ✓ URL after login → /dashboard
+============================================================
+STATUS: PASSED
+============================================================

@@ -1,0 +1,18 @@
+[STEP 1] Navigate to login page...
+[STEP 2] Fill username "admin" (lowercase)...
+[STEP 3] Fill password "admin123"...
+[STEP 4] Submit and intercept POST /auth/validate...
+[STEP 5] Verify redirected to dashboard...
+============================================================
+TC-LOGIN-13 | Lowercase username "admin" (observed: case-insensitive match)
+============================================================
+  ✓ Navigate to login page → visible
+  ✓ Fill username "admin" (lowercase) → filled
+  ✓ Fill password → filled
+  ✓ POST /auth/validate status → 302
+  ✓ Location header (observed: case-insensitive login) → https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index
+  ✓ Set-Cookie contains orangehrm= → present
+  ✓ URL after login → /dashboard
+============================================================
+STATUS: PASSED
+============================================================

@@ -1,0 +1,15 @@
+[STEP 1] Navigate to login page...
+[STEP 2] Fill username with surrounding spaces "  Admin  "...
+[STEP 3] Fill password "admin123"...
+[STEP 4] Submit and observe actual outcome...
+TC-LOGIN-28 observed location header: https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+============================================================
+TC-LOGIN-28 | Username with surrounding spaces (observed behavior)
+============================================================
+  ✓ Navigate to login page → visible
+  ✓ Fill username "  Admin  " → filled
+  ✓ POST /auth/validate status → 302
+  ✓ Location header (observed) → https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+============================================================
+STATUS: PASSED
+============================================================
