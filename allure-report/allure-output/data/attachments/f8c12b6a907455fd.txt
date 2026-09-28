@@ -1,0 +1,14 @@
+[STEP 1] Navigate to login page...
+[STEP 2] Verify password input type before typing...
+[STEP 3] Fill password field...
+[STEP 4] Verify password input type after typing...
+============================================================
+TC-LOGIN-05 | Password field stays masked while typing
+============================================================
+  ✓ GET /auth/login status → 200
+  ✓ Password type before typing → password
+  ✓ Fill password → filled
+  ✓ Password type after typing → password
+============================================================
+STATUS: PASSED
+============================================================

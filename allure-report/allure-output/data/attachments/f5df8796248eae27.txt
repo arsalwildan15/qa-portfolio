@@ -1,0 +1,16 @@
+[STEP 1] Navigate to login page...
+[STEP 2] Leave both fields empty...
+[STEP 3] Click Login...
+[STEP 4] Verify no POST /auth/validate was sent...
+[STEP 5] Verify exactly 2 "Required" validations visible...
+============================================================
+TC-LOGIN-12 | Both fields empty shows two Required validations
+============================================================
+  ✓ Navigate to login page → visible
+  ✓ Both fields left empty → empty
+  ✓ Click Login → clicked
+  ✓ No POST /auth/validate sent → confirmed (FE validation)
+  ✓ Required validation count → 2
+============================================================
+STATUS: PASSED
+============================================================

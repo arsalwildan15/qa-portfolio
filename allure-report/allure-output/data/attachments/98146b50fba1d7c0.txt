@@ -1,0 +1,16 @@
+[STEP 1] Navigate to login page...
+[STEP 2] Fill username "Admin"...
+[STEP 3] Fill password with spaces only "   "...
+[STEP 4] Click Login...
+[STEP 5] Check whether POST /auth/validate was sent...
+============================================================
+TC-LOGIN-16 | Whitespace-only password cannot log in
+============================================================
+  ✓ Navigate to login page → visible
+  ✓ Fill password "   " (spaces only) → filled
+  ✓ Click Login → clicked
+  ✓ No POST /auth/validate sent → confirmed (FE trims whitespace)
+  ✓ Required validation visible → Required
+============================================================
+STATUS: PASSED
+============================================================

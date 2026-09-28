@@ -1,0 +1,20 @@
+[STEP 1] Navigate to login page...
+[STEP 2] Fill username "InvalidUser"...
+[STEP 3] Fill password "admin123"...
+[STEP 4] Submit and intercept POST /auth/validate...
+[STEP 5] Verify error message visible...
+[STEP 6] Verify URL stays at /auth/login...
+============================================================
+TC-LOGIN-07 | Invalid username is rejected
+============================================================
+  ✓ Navigate to login page → visible
+  ✓ Fill username "InvalidUser" → filled
+  ✓ Fill password → filled
+  ✓ POST /auth/validate status → 302
+  ✓ Location header → https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+  ✓ No session cookie set → confirmed
+  ✓ Error message visible → Invalid credentials
+  ✓ URL stays at /auth/login → https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+============================================================
+STATUS: PASSED
+============================================================

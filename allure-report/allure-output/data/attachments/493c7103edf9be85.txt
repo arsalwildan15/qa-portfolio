@@ -1,0 +1,17 @@
+[STEP 1] Navigate to login page...
+[STEP 2] Fill username with 256 characters...
+[STEP 3] Fill password "admin123"...
+[STEP 4] Submit and observe actual status code...
+TC-LOGIN-18 observed status for 256-char username: 302
+[STEP 5] Verify page still usable (no crash)...
+============================================================
+TC-LOGIN-18 | 256-character username does not crash the server
+============================================================
+  ✓ Navigate to login page → visible
+  ✓ Fill username (256 chars) → filled
+  ✓ Status is not 500 → 302
+  ✓ Status is 302 or a 4xx → 302 (observed)
+  ✓ Response body readable (no crash) → ok
+============================================================
+STATUS: PASSED
+============================================================
