@@ -1,0 +1,10 @@
+[STEP 1] Navigate directly to dashboard without logging in...
+[STEP 2] Verify redirected to login page...
+============================================================
+TC-LOGIN-02 | Unauthenticated access to dashboard redirects to login
+============================================================
+  ✓ GET /auth/login (final document) status → 200
+  ✓ URL redirected to /auth/login → https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+============================================================
+STATUS: PASSED
+============================================================

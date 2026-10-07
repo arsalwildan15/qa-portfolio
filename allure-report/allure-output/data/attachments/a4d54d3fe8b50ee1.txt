@@ -1,0 +1,16 @@
+[STEP 1] Navigate to login page...
+[STEP 2] Fill username "Admin"...
+[STEP 3] Fill XSS payload in password: <img src=x onerror=alert(1)>
+[STEP 4] Submit and intercept POST /auth/validate...
+[STEP 5] Wait and verify no alert dialog fired...
+============================================================
+TC-LOGIN-24 | XSS img/onerror payload in password does not execute
+============================================================
+  ✓ Navigate to login page → visible
+  ✓ Fill XSS payload in password → filled
+  ✓ POST /auth/validate status → 302
+  ✓ Location header → https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+  ✓ No alert dialog fired → confirmed
+============================================================
+STATUS: PASSED
+============================================================

@@ -1,0 +1,1 @@
+Session saved to /home/runner/work/qa-portfolio/qa-portfolio/playwright/.auth/session.json
